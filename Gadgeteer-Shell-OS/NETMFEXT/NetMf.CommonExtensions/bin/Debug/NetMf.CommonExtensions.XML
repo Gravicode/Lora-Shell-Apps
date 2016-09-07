@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetMf.CommonExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:NetMf.CommonExtensions.Threading.MonitorMicro">
+            <summary>
+            Implementation of the Pulse and Wait methods for the <see cref="T:System.Threading.Monitor"/> class.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Pulse(System.Object)">
+            <summary>
+            Notifies a thread in the waiting queue of a change in the locked object's state.
+            </summary>
+            <param name="obj">The object a thread is waiting for.</param>
+            <remarks>The calling thread should have ownership of the lock before entering this method</remarks>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Wait(System.Object)">
+            <summary>
+            Releases the lock on an object and blocks the current thread until it reacquires the lock.
+            </summary>
+            <param name="obj">The object on which to wait.</param>
+            <returns>true if the call returned because the caller reacquired the lock for the specified object. This method does not return if the lock is not reacquired.</returns>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Wait(System.Object,System.TimeSpan)">
+            <summary>
+            Releases the lock on an object and blocks the current thread until it reacquires the lock. If the specified time-out interval elapses, the thread enters the ready queue.
+            </summary>
+            <param name="obj">The object on which to wait.</param>
+            <param name="timeout">A TimeSpan representing the amount of time to wait before the thread enters the ready queue. </param>
+            <returns>true if the lock was reacquired before the specified time elapsed; false if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.</returns>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Wait(System.Object,System.Int32)">
+            <summary>
+            Releases the lock on an object and blocks the current thread until it reacquires the lock. If the specified time-out interval elapses, the thread enters the ready queue.
+            </summary>
+            <param name="obj">The object on which to wait.</param>
+            <param name="millisecondsTimeout">The number of milliseconds to wait before the thread enters the ready queue.</param>
+            <returns>true if the lock was reacquired before the specified time elapsed; false if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.</returns>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Wait(System.Object,System.TimeSpan,System.Boolean)">
+            <summary>
+            Releases the lock on an object and blocks the current thread until it reacquires the lock. If the specified time-out interval elapses, the thread enters the ready queue. This method also specifies whether the synchronization domain for the context (if in a synchronized context) is exited before the wait and reacquired afterward.
+            </summary>
+            <param name="obj">The object on which to wait.</param>
+            <param name="timeout">A TimeSpan representing the amount of time to wait before the thread enters the ready queue. </param>
+            <param name="exitContext">true to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, false.</param>
+            <returns>true if the lock was reacquired before the specified time elapsed; false if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.</returns>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MonitorMicro.Wait(System.Object,System.Int32,System.Boolean)">
+            <summary>
+            Releases the lock on an object and blocks the current thread until it reacquires the lock. If the specified time-out interval elapses, the thread enters the ready queue. This method also specifies whether the synchronization domain for the context (if in a synchronized context) is exited before the wait and reacquired afterward.
+            </summary>
+            <param name="obj">The object on which to wait.</param>
+            <param name="millisecondsTimeout">The number of milliseconds to wait before the thread enters the ready queue. </param>
+            <param name="exitContext">true to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, false.</param>        
+            <returns>true if the lock was reacquired before the specified time elapsed; false if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.</returns>
+            <exception cref="T:System.ArgumentNullException">Occurs if the provided lock object is null</exception>
+            <exception cref="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">Occurs if the provided lock is not of type <see cref="T:NetMf.CommonExtensions.Threading.MicroLock"/></exception>
+        </member>
+        <member name="T:NetMf.CommonExtensions.Threading.MicroLock">
+            <summary>
+            Locking object to be used in conjuction with <see cref="T:NetMf.CommonExtensions.Threading.MonitorMicro"/> to enable waiting and pulsing on an item.
+            </summary>
+        </member>
+        <member name="F:NetMf.CommonExtensions.Threading.MicroLock._waitHandle">
+            <summary>
+            Handle to be used when waiting and signaling
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.MicroLock.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:NetMf.CommonExtensions.Threading.MicroLock.WaitHandle">
+            <summary>
+            Handle to be used when waiting and signaling
+            </summary>
+        </member>
+        <member name="T:NetMf.CommonExtensions.Threading.InvalidLockProvidedException">
+            <summary>
+            Exception that is thrown when attempting to use methods in <see cref="T:NetMf.CommonExtensions.Threading.MonitorMicro"/> without 
+            the appropriate lock being passed into the methods.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.InvalidLockProvidedException.#ctor">
+            <summary>
+            Default Exception Constructor
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Threading.InvalidLockProvidedException.#ctor(System.String)">
+            <summary>
+            Exception constructor with specific message.
+            </summary>
+            <param name="message">Message to within exception</param>
+        </member>
+        <member name="T:NetMf.CommonExtensions.FormatException">
+            <summary>
+            The exception that is thrown when the format of an argument does not meet the parameter specifications of the invoked method.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.FormatException.#ctor">
+            <summary>
+            Initializes a new instance of the FormatException class.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.FormatException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the FormatException class with a specified error message.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.FormatException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the FormatException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="ex">The exception that is the cause of the current exception. If the innerException parameter is not a null reference (Nothing in Visual Basic), the current exception is raised in a catch block that handles the inner exception. </param>
+        </member>
+        <member name="T:NetMf.CommonExtensions.StringUtility">
+            <summary>
+            Provides additional standard string operations
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringUtility.IsNullOrEmpty(System.String)">
+            <summary>
+            Check if the provided string is either null or empty
+            </summary>
+            <param name="str">String to validate</param>
+            <returns>True if the string is null or empty</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringUtility.Format(System.String,System.Object)">
+            <summary>
+            Replaces one or more format items in a specified string with the string representation of a specified object.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="arg">The object to format.</param>
+            <returns>A copy of format in which any format items are replaced by the string representation of arg0.</returns>
+            <exception cref="T:NetMf.CommonExtensions.FormatException">format is invalid, or the index of a format item is less than zero, or greater than or equal to the length of the args array.</exception>
+            <exception cref="T:System.ArgumentNullException">format or args is null</exception>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringUtility.Format(System.String,System.Object[])">
+            <summary>
+            Format the given string using the provided collection of objects.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="args">An object array that contains zero or more objects to format.</param>
+            <returns>A copy of format in which the format items have been replaced by the string representation of the corresponding objects in args.</returns>
+            <exception cref="T:NetMf.CommonExtensions.FormatException">format is invalid, or the index of a format item is less than zero, or greater than or equal to the length of the args array.</exception>
+            <exception cref="T:System.ArgumentNullException">format or args is null</exception>
+            <example>
+            x = StringUtility.Format("Quick brown {0}","fox");
+            </example>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringUtility.FormatParameter(System.Object,System.String)">
+            <summary>
+            Format the provided object using the provided format string.
+            </summary>
+            <param name="p">Object to be formatted</param>
+            <param name="formatString">Format string to be applied to the object</param>
+            <returns>Formatted string for the object</returns>
+        </member>
+        <member name="T:NetMf.CommonExtensions.StringBuilder">
+            <summary>
+            Construct a larger string by appending strings together.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.#ctor">
+            <summary>
+            Public constructor
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.#ctor(System.Int32)">
+            <summary>
+            Public constructor
+            </summary>
+            <param name="capacity">Set initial builder capacity</param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.#ctor(System.String)">
+            <summary>
+            Public constructor
+            </summary>
+            <param name="initital">The initial content of the string builder</param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.Append(System.String)">
+            <summary>
+            Append a string to the current string builder
+            </summary>
+            <param name="toAppend">String to be appended.</param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.AppendLine(System.String)">
+            <summary>
+            Append the provided line along with a new line.
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.AppendFormat(System.String,System.Object[])">
+            <summary>
+            Append to the string builder using format string and placeholder arguments
+            </summary>
+            <param name="format">String to be formatted</param>
+            <param name="args">Arguments to be placed into the formatted string</param>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.Clear">
+            <summary>
+            Clear the current string builder back to an empty string.
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringBuilder.ToString">
+            <summary>
+            Get the final built string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NetMf.CommonExtensions.StringExtensions">
+            <summary>
+            General string extensions
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.StringExtensions.Replace(System.String,System.String,System.String)">
+            <summary>
+            Replace all occurances of the 'find' string with the 'replace' string.
+            </summary>
+            <param name="content">Original string to operate on</param>
+            <param name="find">String to find within the original string</param>
+            <param name="replace">String to be used in place of the find string</param>
+            <returns>Final string after all instances have been replaced.</returns>
+        </member>
+        <member name="T:NetMf.CommonExtensions.Parse">
+            <summary>
+            Provides additional parsing operations
+            </summary>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseInt(System.String,System.Int32@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseShort(System.String,System.Int16@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseLong(System.String,System.Int64@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseDouble(System.String,System.Double@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseBool(System.String,System.Boolean@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="val">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseUInt(System.String,System.UInt32@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseUShort(System.String,System.UInt16@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="M:NetMf.CommonExtensions.Parse.TryParseULong(System.String,System.UInt64@)">
+            <summary>
+            Attempt to parse the provided string value.
+            </summary>
+            <param name="s">String value to be parsed</param>
+            <param name="i">Variable to set successfully parsed value to</param>
+            <returns>True if parsing was successful</returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ExtensionAttribute">
+            <summary>
+            Attribute required for extension methods.
+            </summary>
+        </member>
+    </members>
+</doc>

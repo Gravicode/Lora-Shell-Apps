@@ -1,0 +1,8 @@
+<Glide Version="1.0.7">
+  <Window Name="form1" Width="320" Height="240" BackColor="e6e6e6">
+    <TextBlock Name="instance438" X="14" Y="17" Width="280" Height="32" Alpha="255" Text="LORA RECEIVER" TextAlign="Center" TextVerticalAlign="Middle" Font="5" FontColor="0" BackColor="000000" ShowBackColor="False"/>
+    <TextBox Name="txtMessage" X="20" Y="106" Width="280" Height="100" Alpha="255" Text="" TextAlign="Left" Font="4" FontColor="000000"/>
+    <TextBlock Name="instance2060" X="18" Y="70" Width="60" Height="32" Alpha="255" Text="Received:" TextAlign="Left" TextVerticalAlign="Middle" Font="4" FontColor="0" BackColor="000000" ShowBackColor="False"/>
+    <TextBlock Name="txtTime" X="113" Y="70" Width="170" Height="32" Alpha="255" Text="[datetime]" TextAlign="Left" TextVerticalAlign="Middle" Font="4" FontColor="0" BackColor="000000" ShowBackColor="False"/>
+  </Window>
+</Glide>

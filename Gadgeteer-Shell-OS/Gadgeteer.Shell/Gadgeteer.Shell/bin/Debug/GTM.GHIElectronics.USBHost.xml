@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GTM.GHIElectronics.USBHost</name>
+    </assembly>
+    <members>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBHost">
+            <summary>A USBHost module for Microsoft .NET Gadgeteer</summary>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.USBHost.#ctor(System.Int32)">
+            <summary>Constructs a new instance.</summary>
+            <param name="socketNumber">The mainboard socket that has the module plugged into it.</param>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.USBHost.MountMassStorage">
+            <summary>Attempts to mount the mass storage device.</summary>
+            <returns>Whether or not the mass storage device was successfully mounted.</returns>
+        </member>
+        <member name="M:Gadgeteer.Modules.GHIElectronics.USBHost.UnmountMassStorage">
+            <summary>Attempts to unmount the mass storage device.</summary>
+            <returns>Whether or not the mass storage device was successfully unmounted.</returns>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.USBHost.MassStorageMounted">
+            <summary>Raised when the file system of the mass storage device is mounted.</summary>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.USBHost.MassStorageUnmounted">
+            <summary>Raised when the file system of the mass storage device is unmounted.</summary>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.USBHost.MouseConnected">
+            <summary>Raised when a mouse is connected.</summary>
+        </member>
+        <member name="E:Gadgeteer.Modules.GHIElectronics.USBHost.KeyboardConnected">
+            <summary>Raised when a keyboard is connected.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.ConnectedKeyboard">
+            <summary>The current connected keyboard.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.ConnectedMouse">
+            <summary>The current connected mouse.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.MassStorageDevice">
+            <summary>The StorageDevice for the currently mounted mass storage device.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.IsKeyboardConnected">
+            <summary>Whether or not the keyboard is connected.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.IsMouseConnected">
+            <summary>Whether or not the mouse is connected.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.IsMassStorageConnected">
+            <summary>Whether or not the mass storage device is connected.</summary>
+        </member>
+        <member name="P:Gadgeteer.Modules.GHIElectronics.USBHost.IsMassStorageMounted">
+            <summary>Whether or not the mass storage device is mounted.</summary>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBHost.MassStorageMountedEventHandler">
+            <summary>Represents the delegate that is used for the MassStorageMounted event.</summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="device">A storage device that can be used to access the SD card.</param>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBHost.MassStorageUnmountedEventHandler">
+            <summary>Represents the delegate that is used for the MassStorageUnmounted event.</summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBHost.MouseConnectedEventHandler">
+            <summary>Represents the delegate that is used for the MouseConnected event.</summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="mouse">The object associated with the event.</param>
+        </member>
+        <member name="T:Gadgeteer.Modules.GHIElectronics.USBHost.KeyboardConnectedEventHandler">
+            <summary>Represents the delegate that is used to handle the KeyboardConnected event.</summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="keyboard">The object associated with the event.</param>
+        </member>
+    </members>
+</doc>
